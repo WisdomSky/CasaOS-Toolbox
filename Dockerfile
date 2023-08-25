@@ -8,7 +8,6 @@ ENV DB_USERNAME=casaos
 ENV DB_PASSWORD=casaos
 
 
-VOLUME /www
 WORKDIR /www
 
 RUN apt-get update
@@ -28,7 +27,6 @@ USER root
 COPY ./src /www
 
 RUN composer install
-RUN php artisan key:generate
 RUN npm install
 RUN npm run build
 

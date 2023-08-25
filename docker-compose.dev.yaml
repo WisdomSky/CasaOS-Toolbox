@@ -1,0 +1,33 @@
+
+services:
+  app:
+    build: ./dev
+    image: casaos-toolbox
+    container_name: casaos-toolbox
+    environment:
+      WEBUI_PORT: 1001
+    volumes:
+      - ./src:/www
+      - /usr/bin/casaos-cli:/usr/bin/casaos-cli
+      - /etc/casaos/gateway.ini:/casaos/gateway.ini
+      - /var/lib/casaos/apps:/casaos/apps
+      - /var/lib/casaos/www:/casaos/www
+    depends_on:
+      - db
+    network_mode: host
+    privileged: true
+    tty: true
+  db:
+    image: mariadb:11
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: 'casaos'
+      MYSQL_DATABASE: 'casaos'
+      MYSQL_USER: 'casaos'
+      MYSQL_PASSWORD: 'casaos'
+    ports:
+      - target: 3306
+        published: "33306"
+        protocol: tcp
+
+

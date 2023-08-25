@@ -27,6 +27,7 @@ USER root
 COPY ./src /www
 
 RUN composer install
+RUN php artisan key:generate
 RUN npm install
 RUN npm run build
 

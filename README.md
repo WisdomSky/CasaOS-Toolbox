@@ -1,16 +1,16 @@
-CasaOS Toolbox
+# CasaOS Toolbox
 
 Sample `docker-compose.yaml`:
 
 ```yaml
 services:
   app:
-    build: .
-    image: wisdomsky/casaos-toolbox:latest
+    image: wisdomsky/casaos-toolbox
+    restart: unless-stopped
     network_mode: host
     environment:
       WEBUI_PORT: 8088
-      DB_HOST: 192.168.31.31
+      DB_HOST: 0.0.0.0
       DB_PORT: 33306
       DB_DATABASE: casaos
       DB_USERNAME: casaos

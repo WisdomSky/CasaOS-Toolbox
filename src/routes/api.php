@@ -30,3 +30,4 @@ Route::get('/settings', [SettingsController::class, 'getSettings']);
 Route::post('/settings', [SettingsController::class, 'saveSettings']);
 Route::get('/settings/base_url', [SettingsController::class, 'getBaseUrl']);
 Route::get('/settings/current_version', [SettingsController::class, 'getCurrentVersion']);
+Route::get('/settings/latest_version', [SettingsController::class, 'getLatestVersion']);

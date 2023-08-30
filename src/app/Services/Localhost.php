@@ -20,4 +20,21 @@ class Localhost
 
         return trim($cmd2->getOutput());
     }
+
+
+    public function getGatewayPort() {
+        $cmd = new Process(['cat', '/casaos/gateway.ini']);
+        $cmd2 = new Process(['grep', 'port']);
+
+        $cmd->run();
+
+        $cmd2->setInput($cmd->getOutput());
+        $cmd2->run();
+
+        $cmd->wait();
+        $cmd2->wait();
+
+        return explode('=',trim($cmd2->getOutput()))[1];
+    }
+
 }

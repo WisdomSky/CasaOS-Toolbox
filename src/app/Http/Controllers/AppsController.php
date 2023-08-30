@@ -3,15 +3,16 @@ namespace App\Http\Controllers;
 
 use App\Classes\CasaosApp;
 use App\Models\AppHide;
+use App\Services\Localhost;
 use Illuminate\Http\Request;
 use Symfony\Component\Process\Process;
 
 
 class AppsController extends Controller
 {
-    public function getAppsList() {
-
-        $cmd = new Process(['casaos-cli', 'app-management', 'list', 'apps']);
+    public function getAppsList(Localhost $localhost) {
+        $gateway_port = $localhost->getGatewayPort();
+        $cmd = new Process(['casaos-cli', 'app-management', 'list', 'apps', '-u','localhost:'. $gateway_port]);
         $cmd->run();
         $cmd->wait();
         $lines = explode("\n", $cmd->getOutput());

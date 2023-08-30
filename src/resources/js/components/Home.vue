@@ -5,7 +5,8 @@
         <div class="mt-4">
             <p class="my-2">Just like an ordinary toolbox...</p>
             <div class="text-xs">
-                <strong>Current version</strong>: {{ version }}
+                <strong>Current version</strong>: v{{ version }}&nbsp;
+                <span v-if="outdated" style="color:red">(New version available. v{{ nversion }})</span>
             </div>
             <div class="text-xs">
                 <strong>Developer</strong>: <a href="https://github.com/WisdomSky">WisdomSky</a>
@@ -19,11 +20,16 @@
     import axios from "axios";
 
     const version = ref<string>('');
+    const outdated = ref<boolean>(false);
+    const nversion = ref<string>('');
 
 
     onBeforeMount(async () => {
-        const { data } = await axios.get('/api/settings/current_version');
-        version.value = data;
+        const current_version = await axios.get('/api/settings/current_version');
+        const latest_version = await axios.get('/api/settings/latest_version');
+        version.value = current_version.data;
+        outdated.value = current_version.data !== latest_version.data;
+        nversion.value = latest_version.data;
     })
 
 

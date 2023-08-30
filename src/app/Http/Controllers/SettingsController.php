@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Setting;
+use App\Services\Toolbox;
 use Illuminate\Http\Request;
 
 
@@ -33,6 +34,10 @@ class SettingsController extends Controller
 
     public function getCurrentVersion() {
         return response(config('app.casaos_toolbox_version'));
+    }
+
+    public function getLatestVersion(Toolbox $toolbox) {
+        return response($toolbox->getToolboxLatestVersion());
     }
 
 }

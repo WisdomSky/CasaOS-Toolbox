@@ -42,9 +42,9 @@ const nversion = ref<string>('');
 onBeforeMount(async () => {
     const current_version = await axios.get('/api/settings/current_version');
     const latest_version = await axios.get('/api/settings/latest_version');
-    version.value = current_version.data;
+    version.value = String(current_version.data);
+    nversion.value = String(latest_version.data);
     outdated.value = current_version.data !== latest_version.data;
-    nversion.value = latest_version.data;
 })
 
 

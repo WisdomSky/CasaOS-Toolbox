@@ -38,9 +38,8 @@ class SettingsController extends Controller
 
 
     public function getBaseUrl() {
-        $ip = Setting::where('name','base_url')->pluck('value')[0];
-        $port = config('app.webui_port');
-        return response("http://{$ip}:{$port}");
+        $host = Setting::where('name','base_url')->pluck('value')[0];
+        return response("//{$host}");
     }
 
     public function getCurrentVersion() {

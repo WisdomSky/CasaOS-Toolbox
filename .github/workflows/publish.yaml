@@ -42,5 +42,5 @@ jobs:
           tags: |
             wisdomsky/casaos-toolbox:latest
             wisdomsky/casaos-toolbox:0.2
-            ghcr.io/wisdomsky/casaos-toolbox:latest
-            ghcr.io/wisdomsky/casaos-toolbox:0.2
+#            ghcr.io/wisdomsky/casaos-toolbox:latest
+#            ghcr.io/wisdomsky/casaos-toolbox:0.2

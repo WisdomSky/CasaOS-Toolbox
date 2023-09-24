@@ -28,13 +28,10 @@ class Injector extends Command
      */
     public function handle()
     {
-        $ip = Setting::where('name','base_url')->pluck('value')[0];
-        $port = env('WEBUI_PORT');
-
-        $this->info("IP: {$ip}:{$port}");
+        $host = Setting::where('name','base_url')->pluck('value')[0];
 
         $htmlFilePath = '/casaos/www/index.html';
-        $cssFilePath = "//{$ip}:{$port}/casaos-toolbox.css";
+        $cssFilePath = "//{$host}/casaos-toolbox.css";
 
         $dom = new DOMDocument();
         $dom->loadHTMLFile($htmlFilePath);

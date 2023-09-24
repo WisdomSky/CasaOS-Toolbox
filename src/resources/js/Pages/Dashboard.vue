@@ -13,7 +13,7 @@
                 <p class="my-2">Just like an ordinary toolbox...</p>
                 <div class="text-xs">
                     <strong>Current version</strong>:
-                    <template v-if="version.length">v{{ version }}</template>
+                    <template v-if="version.trim().length">v{{ version }}</template>
                     <template v-else>Loading...</template>&nbsp;
                     <span v-if="outdated" style="color:red">(New version available. v{{ nversion }})</span>
                 </div>

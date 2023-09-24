@@ -192,5 +192,6 @@ return [
 
     'casaos_toolbox_version' => env('CASAOS_TOOLBOX_VERSION', '0.0'),
 
+    'force_https' => env('FORCE_HTTPS')
 
 ];

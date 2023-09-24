@@ -8,6 +8,7 @@ ENV DB_USERNAME=casaos
 ENV DB_PASSWORD=casaos
 
 ENV APP_URL="http://localhost"
+ENV FORCE_HTTPS=false
 
 WORKDIR /www
 

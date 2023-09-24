@@ -5,6 +5,7 @@ services:
     image: casaos-toolbox
     container_name: casaos-toolbox
     environment:
+      FORCE_HTTPS: false
       WEBUI_PORT: 8088
       DB_HOST: 127.0.0.1
       DB_PORT: 3306

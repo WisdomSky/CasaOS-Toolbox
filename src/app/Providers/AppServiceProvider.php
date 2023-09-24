@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Routing\UrlGenerator;
 
@@ -18,9 +20,13 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      */
-    public function boot(UrlGenerator $url): void
+    public function boot(UrlGenerator $url, Request $request): void
     {
-        if(config('app.force_https'))
+
+        $host = $request->getHost();
+        $ip_pattern = '/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/';
+
+        if($host !== 'localhost' && !preg_match($ip_pattern, $host) && config('app.force_https'))
         {
             $url->forceScheme('https');
         }

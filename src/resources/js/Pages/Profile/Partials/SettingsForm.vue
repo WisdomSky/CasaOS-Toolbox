@@ -44,7 +44,7 @@ const updateSettings = () => {
 
         <form @submit.prevent="updateSettings" class="mt-6 space-y-6">
             <div>
-                <InputLabel for="base_url" value="Host" />
+                <InputLabel for="base_url" value="Domain" />
 
                 <TextInput
                     id="base_url"

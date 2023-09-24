@@ -41,6 +41,6 @@ jobs:
           push: true
           tags: |
             wisdomsky/casaos-toolbox:latest
-            wisdomsky/casaos-toolbox:0.1.1
+            wisdomsky/casaos-toolbox:0.2
             ghcr.io/wisdomsky/casaos-toolbox:latest
-            ghcr.io/wisdomsky/casaos-toolbox:0.1.1
+            ghcr.io/wisdomsky/casaos-toolbox:0.2

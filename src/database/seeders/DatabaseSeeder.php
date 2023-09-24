@@ -14,11 +14,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run(Localhost $localhost): void
     {
-        $baseUrl = new Setting();
 
-        $baseUrl->name = "base_url";
-        $baseUrl->value = $localhost->getNetworkIpAddress();
-        $baseUrl->save();
+        if (Setting::where('name', 'base_url')->count() === 0) {
+            $baseUrl = new Setting();
+            $baseUrl->name = "base_url";
+            $baseUrl->value = $localhost->getNetworkIpAddress();
+            $baseUrl->save();
+        }
 
 
     }

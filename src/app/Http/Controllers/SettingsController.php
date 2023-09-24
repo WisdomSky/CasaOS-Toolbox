@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Setting;
 use App\Services\Toolbox;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 
 
 class SettingsController extends Controller
@@ -23,8 +24,18 @@ class SettingsController extends Controller
             $host->save();
         }
 
-        return $this->getSettings();
+        Artisan::call('toolbox:inject');
+
+        return back();
     }
+
+    public function cleaner(Request $request) {
+
+        Artisan::call('toolbox:uninject');
+
+        return back();
+    }
+
 
     public function getBaseUrl() {
         $ip = Setting::where('name','base_url')->pluck('value')[0];

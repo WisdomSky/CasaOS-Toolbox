@@ -7,6 +7,8 @@ ENV GID=1000
 
 ENV WEBUI_PORT=8088
 
+ENV APP_URL="http://localhost"
+
 VOLUME /www
 WORKDIR /www
 

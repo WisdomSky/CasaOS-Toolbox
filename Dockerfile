@@ -7,6 +7,7 @@ ENV DB_DATABASE=casaos
 ENV DB_USERNAME=casaos
 ENV DB_PASSWORD=casaos
 
+ENV APP_URL="http://localhost"
 
 WORKDIR /www
 
